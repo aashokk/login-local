@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   loginForm : FormGroup;
   submitted : boolean = false;
+  inValid : boolean = false;
   constructor(private form_builder : FormBuilder, private userService : UserService,  private router : Router) { }
 
   ngOnInit() {
@@ -23,11 +24,10 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
     //console.log(this.loginForm.invalid);
     //console.log(this.loginForm.value);
-    this.userService.loginUser(this.loginForm.value);
-
-    // this.userService.loginUser(this.loginForm.value).subscribe(data => {
-    //   this.router.navigate(['register'])
-    // });
+    //this.inValid = this.userService.loginUser(this.loginForm.value);
+    this.userService.loginUser(this.loginForm.value).subscribe(data => {
+      if(data){ this.router.navigate(['register']); } else { this.inValid = true; }
+    });
   }
 
 }

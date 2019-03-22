@@ -10,5 +10,9 @@
       <input type="text" class="form-control" id="formGroupExampleInput2" formControlName="password" placeholder="Another input">
     </div>
     <button type="submit" class="btn btn-primary">Sign in</button>
+   &nbsp;&nbsp; <a routerLink="/register" class="btn btn-primary">Sign Up</a>
   </form>
+  <span *ngIf="submitted && inValid">
+    Invalid Credentials
+  </span>
 </div>
